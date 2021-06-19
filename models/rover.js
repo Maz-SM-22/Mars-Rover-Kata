@@ -1,4 +1,4 @@
-const grid = require('./grid'); 
+const position = require('./position'); 
 
 const directions = {
     N: 'N', 
@@ -9,9 +9,9 @@ const directions = {
 
 class Rover {
     constructor() {
-        this.position = grid.Position(0, 0); 
+        this.position = new position(0, 0); 
         this.direction = directions.N
     }
 }
 
-module.exports = Rover; 
+module.exports = { Rover, directions }; 

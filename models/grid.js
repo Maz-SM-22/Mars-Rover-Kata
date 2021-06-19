@@ -5,13 +5,6 @@ class Grid {
     }
 }
 
-class Position {
-    constructor(x, y) {
-        this.x = x; 
-        this.y = y
-    }
-}
-
 class Obstacle {
     constructor(x, y) {             //  Check this later. Might need refactoring. 
         this.x = x; 
@@ -19,4 +12,4 @@ class Obstacle {
     }
 }
 
-module.exports = Grid, Position, Obstacle; 
+module.exports = Grid, Obstacle; 
