@@ -5,7 +5,6 @@ const position = require('../../models/position');
 
 describe('User input', ()=>{
     it('Parse user input correctly', ()=> {
-        console.log(directions.W); 
         expect(parser.parseUserInput('MMRMMLM')).toEqual(['M', 'M', 'R', 'M', 'M', 'L', 'M']); 
     })
 });
@@ -22,5 +21,13 @@ describe('Update rover position', ()=> {
     // })
     it('Turn rover left', ()=> {
         expect(controls.rotateLeft(new Rover())).toEqual(directions.W); 
+    })
+})
+
+describe('Executing rover', ()=> {
+    it('Execute rover command', ()=> {
+        let testRover = new Rover; 
+        testRover.position = new position(2, 3); 
+        expect(controls.execute(parser.parseUserInput('MMRMMLM'))).toEqual(testRover);
     })
 })

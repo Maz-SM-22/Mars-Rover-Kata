@@ -1,5 +1,5 @@
-const directions = require('../models/rover');
-let rover = require('../models/rover'); 
+const { Rover, directions } = require('../models/rover');
+const parser = require('../controllers/inputParser'); 
 
 exports.move = (rover)=> {                  // Avoid inappropriate intimacy (Code smell)
     switch(rover.direction) {
@@ -20,7 +20,7 @@ exports.move = (rover)=> {                  // Avoid inappropriate intimacy (Cod
     }
 }
 
-exports.rotateRight = ()=> {
+exports.rotateRight = (rover)=> {
     switch(rover.direction) {
         case 'N': 
             rover.direction = directions.E;  
@@ -39,7 +39,7 @@ exports.rotateRight = ()=> {
     }
 }
 
-exports.rotateLeft = ()=> {
+exports.rotateLeft = (rover)=> {
     switch(rover.direction) {
         case 'N': 
             rover.direction = directions.W;  
@@ -57,3 +57,21 @@ exports.rotateLeft = ()=> {
             throw Error('Rover has crashed!'); 
     }
 }
+
+exports.execute = (parsedInput)=> {
+    let rover = new Rover();
+    for(let item of parsedInput) {
+        switch(item) {
+            case 'M': 
+                this.move(rover); 
+            case 'L': 
+                this.rotateLeft(rover); 
+            case 'R': 
+                this.rotateRight(rover); 
+            default: 
+                throw Error('Rover has crashed!'); 
+        }
+    }
+    return rover; 
+}
+// execute => if 'M' => move, if 'L' => rotateLeft, 
