@@ -2,6 +2,8 @@ const parser = require('../../controllers/inputParser');
 const controls = require('../../services/controls'); 
 const { Rover, directions } = require('../../models/rover'); 
 const position = require('../../models/position'); 
+const { Grid, Obstacle } = require('../../models/grid'); 
+const game = require('../../services/game'); 
 
 describe('User input', ()=>{
     it('Parse user input correctly', ()=> {
@@ -29,5 +31,13 @@ describe('Executing rover', ()=> {
         let testRover = new Rover; 
         testRover.position = new position(2, 3); 
         expect(controls.execute(parser.parseUserInput('MMRMMLM'))).toEqual(testRover);
+    })
+})
+
+describe('Create obstacles', ()=> {
+    it('Add obstacles to grid', ()=> {
+        let testGrid = new Grid(10, 10);
+        game.createObstacles(testGrid);
+        expect(testGrid.obstacles.length).toEqual(3);
     })
 })

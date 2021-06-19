@@ -1,7 +1,8 @@
 class Grid {
     constructor(width, length) {
         this.width = 10; 
-        this.length = 10
+        this.length = 10;
+        this.obstacles = []
     }
 }
 
@@ -12,4 +13,4 @@ class Obstacle {
     }
 }
 
-module.exports = Grid, Obstacle; 
+module.exports = { Grid, Obstacle }; 
