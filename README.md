@@ -1,2 +1,2 @@
 # Mars-Rover-Kata
-https://katalyst.codurance.com/mars-rover
+KAta based on: https://katalyst.codurance.com/mars-rover
